@@ -1,0 +1,31 @@
+# Configuration for Scrapers
+
+strategies:
+  ceneo.pl:
+    type: "static"
+    base_url: "https://www.ceneo.pl"
+    search_url: "https://www.ceneo.pl/;szukaj-{query}"
+    headers:
+      User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    selectors:
+      product_container: ".cat-prod-row"
+      name: ".cat-prod-row__name a"
+      link: ".cat-prod-row__name a" # href attribute
+      price: ".cat-prod-row__price .price" # Text will be "99,99" (split in spans)
+      image: ".cat-prod-row__foto img"
+
+  allegro.pl:
+    type: "dynamic"
+    base_url: "https://allegro.pl"
+    search_url: "https://allegro.pl/listing?string={query}"
+    selectors:
+      # Allegro uses randomized classes, so we rely on semantic HTML structure
+      product_container: "article[data-role='offer']"
+      name: "h2 a"
+      link: "h2 a"
+      price: "span[aria-label]" # Often '123,45 zł'
+
+  default:
+    type: "static"
+    selectors:
+      name: "title"

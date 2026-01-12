@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cat-food-scraper
+  namespace: default
+spec:
+  schedule: "0 3 * * *" # Runs every day at 03:00 AM
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: scraper
+            image: your-registry/cat-food-scraper:latest # TODO: Replace with your actual image
+            imagePullPolicy: Always
+            envFrom:
+            - secretRef:
+                name: supabase-secrets
+            resources:
+              requests:
+                memory: "512Mi"
+                cpu: "500m"
+              limits:
+                memory: "1Gi" # Playwright needs some RAM
+                cpu: "1000m"

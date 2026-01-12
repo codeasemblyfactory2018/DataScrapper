@@ -1,0 +1,34 @@
+# OS & Tools
+.DS_Store
+.vscode/
+.idea/
+
+# Secret / Local Config (CRITICAL)
+.env
+.env.local
+**/secrets.yaml
+**/secrets-template.yaml
+
+# Python (Backend)
+backend/venv/
+backend/__pycache__/
+*.py[cod]
+backend/.pytest_cache/
+backend/cat_food_application_project/
+
+# Node (Frontend)
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/.pnp
+.pnp.js
+
+# Docker
+*.tar.gz
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

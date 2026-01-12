@@ -1,0 +1,8 @@
+httpx
+beautifulsoup4
+playwright
+pyyaml
+pydantic
+supabase
+loguru
+python-dotenv
