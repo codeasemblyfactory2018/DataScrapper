@@ -1,0 +1,7 @@
+name = "cat-food-tracker"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = "out"
+
+[vars]
+# You can add public env variables here if needed
+NEXT_PUBLIC_SITE_NAME = "Kocie Okazje"
