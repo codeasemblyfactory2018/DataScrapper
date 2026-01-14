@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: cat-food-scraper
-  namespace: default
+  namespace: catfood
 spec:
   schedule: "0 3 * * *" # Runs every day at 03:00 AM
   concurrencyPolicy: Forbid
@@ -15,7 +15,7 @@ spec:
           restartPolicy: OnFailure
           containers:
           - name: scraper
-            image: your-registry/cat-food-scraper:latest # TODO: Replace with your actual image
+            image: kedar1986/data-scrapper:latest # TODO: Replace with your actual image
             imagePullPolicy: Always
             envFrom:
             - secretRef:
